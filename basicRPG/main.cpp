@@ -28,12 +28,12 @@ int main()
 	// Maximizes the console window
 	WindowController();
 
-	TitleScreen();
+	//TitleScreen();
 
 	//Sleep(4000);
 	//system("cls");
 
-	LoadingScreen();
+	//LoadingScreen();
 
 	MainMenu();
 
