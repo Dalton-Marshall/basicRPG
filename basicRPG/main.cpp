@@ -173,7 +173,6 @@ void MainMenu()
 	std::cout << "\t\t\t2. Load Game" << std::endl << std::endl;
 	std::cout << "\t\t\t3. Credits" << std::endl << std::endl;
 	std::cout << "\t\t\t4. Exit Game";
-	std::cout << "\t\t\t4. Exit Game2";
 	std::cout << "\n\n\t\t  Choice: ";
 	std::cin >> mainMenuChoice;
 

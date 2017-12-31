@@ -69,6 +69,10 @@ artifacts/
 *.svclog
 *.scc
 
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
 # Chutzpah Test files
 _Chutzpah*
 
@@ -187,10 +191,6 @@ ClientBin/
 *.publishsettings
 node_modules/
 orleans.codegen.cs
-
-*.vcxproj
-*.vcxproj.filters
-*.sln
 
 
 # RIA/Silverlight projects
