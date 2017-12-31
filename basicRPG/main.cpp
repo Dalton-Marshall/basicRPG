@@ -12,7 +12,8 @@ void TitleScreen();
 void LoadingScreen();
 void MainMenu();
 void NewGame();
-void NewGame(std::string);
+void CreateSave(std::string);
+bool checkForExistingSave(std::string);
 void LoadGame();
 void LoadGame(std::string);
 void RunCredits();
@@ -158,6 +159,7 @@ void MainMenu()
 {
 	int mainMenuChoice;
 
+	system("cls");
 	std::cout << std::string(13, '\n');
 	//std::cout << "\t\t\t\tMAIN MENU\n\n\n";
 
@@ -211,14 +213,12 @@ void MainMenu()
 void NewGame()
 {
 	std::string charToCreate = "";
-	std::string ifilename = "";
+
 	std::cout << std::string(25, '\n');
 	std::cout << "Character name: ";
 	std::cin >> charToCreate;
-	ifilename = charToCreate + ".dat";
 
-	std::ifstream inputFile(ifilename, std::ios::in);
-	if (inputFile.is_open())
+	if (checkForExistingSave(charToCreate))
 	{
 		std::cout << "That character already exists." << std::endl;
 		std::cout << "Would you like to load that character? (y/n)";
@@ -229,18 +229,43 @@ void NewGame()
 			system("cls");
 			LoadGame(charToCreate);
 		}
+		else
+			MainMenu();
+	}
+	else
+	{
+		CreateSave(charToCreate);
 	}
 }
 
-// called from LoadGame()
-void NewGame(std::string charName)
+void CreateSave(std::string charName)
 {
 	std::string charToCreate = charName;
 	std::string ofilename = charToCreate + ".dat";
+
+	system("cls");
 	std::cout << std::string(25, '\n');
 	std::cout << "Character name: " << charToCreate << std::endl;
+
 	std::ofstream outputFile(ofilename, std::ios::out); // creates character's save file
+	std::cout << "Character created" << std::endl;
 	//Player player = Player();
+}
+
+bool checkForExistingSave(std::string charName)
+{
+	bool fileExists = false;
+
+	std::string ofilename = charName + ".dat";
+
+	std::ifstream inputFile(ofilename, std::ios::in); //check for existing file
+	if (inputFile.is_open())
+		fileExists = true;
+
+	if (fileExists)
+		return true;
+	else
+		return false;
 }
 
 // called from MainMenu()
@@ -248,16 +273,18 @@ void LoadGame()
 {
 	std::string charToLoad = "";
 	std::string ifilename = "";
+
 	std::cout << std::string(25, '\n');
 	std::cout << "Character to load: ";
 	std::cin >> charToLoad;
 	ifilename = charToLoad + ".dat";
 
 	std::ifstream inputFile(ifilename, std::ios::in);
-	if (inputFile.is_open())
+
+	if (checkForExistingSave(charToLoad))
 	{
-		std::cout << "Successfully found savegame: " << ifilename << std::endl;
-		inputFile.close();
+
+		std::cout << "Successfully found save: " << ifilename << std::endl;
 	}
 	else
 	{
@@ -268,13 +295,10 @@ void LoadGame()
 		if (x == 'y')
 		{
 			system("cls");
-			NewGame(charToLoad);
+			CreateSave(charToLoad);
 		}
 		else
-		{
-			system("cls");
 			MainMenu();
-		}
 	}
 }
 
