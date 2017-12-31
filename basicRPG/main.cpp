@@ -33,7 +33,7 @@ int main()
 	//Sleep(4000);
 	//system("cls");
 
-	//LoadingScreen();
+	LoadingScreen();
 
 	MainMenu();
 
