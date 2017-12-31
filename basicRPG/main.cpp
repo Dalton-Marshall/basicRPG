@@ -30,14 +30,14 @@ int main()
 
 	//TitleScreen();
 
-	//Sleep(4000); // delays the title screen from clearing
-	//system("cls"); // clears the title screen
+	//Sleep(4000);
+	//system("cls");
 
-	//LoadingScreen(); // initiates loading screen
+	//LoadingScreen();
 
-	MainMenu(); // initiates main menu
+	MainMenu();
 
-	//GameLoop(); // initiates gameplay
+	//GameLoop();
 
 	while (gameIsOver == false)
 	{
