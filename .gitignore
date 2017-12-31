@@ -188,6 +188,11 @@ ClientBin/
 node_modules/
 orleans.codegen.cs
 
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
+
 # RIA/Silverlight projects
 Generated_Code/
 
